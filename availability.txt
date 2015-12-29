@@ -1,0 +1,6 @@
+# For Month and Year use 2 and 4 digits, respectively. 
+# Not sure how important formatting is, so put spaces before them.
+Month: 01
+Year: 2016
+Josh: 1 7 12 15 20 21 27
+Phil: 3 4 7 8 9 10 14 22 30
