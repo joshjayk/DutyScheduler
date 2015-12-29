@@ -27,6 +27,8 @@ def main():
 		#dates = Raw dates listed in the input file.
 		#dayCount = Count of how many weekdays they have been on duty.
 		#endCount = Count of how many weekends they have been on duty.
+		#dayPrim = Count of how many weekdays they were primary duty.
+		#endPrim = Count of how many weekends they were primary duty.
 		for line in file:
 			if line[0] == "#":
 				continue
@@ -43,13 +45,18 @@ def main():
 				#1. The list of formatted datetime days,
 				#2. The dayCount for that name,
 				#3. The endCOunt for that name.
+				#4. The dayPrim for that name,
+				#5. The endPrim for that name.
 				unavailable.setdefault(name, [])
 				unavailable[name].append(datetimelist)
 				unavailable[name].extend((dayCount, endCount, dayPrim, endPrim))
 		totaldays = calendar.monthrange(int(year), int(month))[1]
 	print(unavailable)
-#def createDuty(availability):
-	
+	createDuty(unavailable)
+def createDuty(availability):
+	dutyDays{}
+	for key in availability:
+		dutyDays.setdefault(key, [])
 
 if __name__ == "__main__":
 	main()
