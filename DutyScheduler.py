@@ -5,6 +5,7 @@ for each person in the file, keeping track of total duty days of the semester.
 
 from datetime import datetime
 import calendar
+import random
 
 def main():
 	unavailable = {}
@@ -30,7 +31,7 @@ def main():
 			if line[0] == "#":
 				continue
 			else:
-				name, dates, dayCount, endCount = line.split(' : ')
+				name, dates, dayCount, endCount, dayPrim, endPrim = line.split(' : ')
 				if '\n' in endCount:
 					endCount = endCount[:-1]
 				daylist = dates.split()
@@ -38,11 +39,17 @@ def main():
 				for day in daylist:
 					day = datetime.strptime(year + '-' + month + '-' + day, '%Y-%m-%d')
 					datetimelist.append(day)
-				#Lastly, put the appropriate datetime formatted list into the dictionary
-				#with its respective name.
-				unavailable[name] = datetimelist
+				#unavailable = dictionary where key = name, and the value is a list of 3 things:
+				#1. The list of formatted datetime days,
+				#2. The dayCount for that name,
+				#3. The endCOunt for that name.
+				unavailable.setdefault(name, [])
+				unavailable[name].append(datetimelist)
+				unavailable[name].extend((dayCount, endCount, dayPrim, endPrim))
 		totaldays = calendar.monthrange(int(year), int(month))[1]
-		print(unavailable)
+	print(unavailable)
+#def createDuty(availability):
+	
 
 if __name__ == "__main__":
 	main()
